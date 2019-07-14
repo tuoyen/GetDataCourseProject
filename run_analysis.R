@@ -83,7 +83,7 @@ testset$datatype <- rep("test", nrow(testset))
 head(testset$datatype)
 
 
-# 1. Merge the training and the test sets to create one data set
+# STEP 1. Merge the training and the test sets to create one data set
 
 total <- rbind(trainset, testset)
 
@@ -97,7 +97,7 @@ unique(total$subject)
 length(unique(total$subject))
 
 
-# 2. Extract only the measurements on the mean and standard deviation for each measurement
+# STEP 2. Extract only the measurements on the mean and standard deviation for each measurement
 
 extract <- grep("mean\\()|std\\()", features$V2)
 length(extract)
@@ -107,11 +107,11 @@ subset <- select(total, subject, activity, extract)
 dim(subset) ### check
 
 
-# 3. Descriptive activity names are stored in the "activity" variable 
+# STEP 3. Descriptive activity names are stored in the "activity" variable 
 
-# 4. All variable names are appropriately labeled 
+# STEP 4. All variable names are appropriately labeled 
 
-# 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject
+# STEP 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject
 
 summarydata <- subset %>% group_by(activity, subject) %>% summarize_all(mean)
 write.table(summarydata, "summarydata.txt", row.names = FALSE)

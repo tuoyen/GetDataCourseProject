@@ -1,10 +1,15 @@
-*DESCRIPTION OF THE REPOSITORY*
-===============================
-
-This repo contains the following files: - summarydata.txt: a dataset of within-subject mean and standard deviations for six different activity measurements - run\_analysis.R: R script for generating the dataset "summarydata.txt"" - README.md: a read me file describing how the script "run\_analysis.R" works - CodeBook.md: a code book describing variables in the dataset "summarydata.txt"
-
-*DESCRIPTION OF THE R SCRIPT*
+DESCRIPTION OF THE REPOSITORY
 =============================
+
+This repo contains the following files:
+
+-   summarydata.txt: a dataset of within-subject mean and standard deviations for six different activity measurements
+-   run\_analysis.R: R script for generating the dataset "summarydata.txt""
+-   README.md: a read me file describing how the script "run\_analysis.R" works
+-   CodeBook.md: a code book describing variables in the dataset "summarydata.txt"
+
+DESCRIPTION OF THE R SCRIPT
+===========================
 
 HOUSEKEEPING
 ------------
@@ -98,8 +103,8 @@ testset$datatype <- rep("test", nrow(testset))
 head(testset$datatype)
 ```
 
-1. Merge the training and the test sets to create one data set
---------------------------------------------------------------
+STEP 1. Merge the training and the test sets to create one data set
+-------------------------------------------------------------------
 
 ``` r
 total <- rbind(trainset, testset)
@@ -114,8 +119,8 @@ unique(total$subject)
 length(unique(total$subject))
 ```
 
-2. Extract only the measurements on the mean and standard deviation for each measurement
-----------------------------------------------------------------------------------------
+STEP 2. Extract only the measurements on the mean and standard deviation for each measurement
+---------------------------------------------------------------------------------------------
 
 ``` r
 extract <- grep("mean\\()|std\\()", features$V2)
@@ -126,14 +131,14 @@ subset <- select(total, subject, activity, extract)
 dim(subset) ### check
 ```
 
-3. Descriptive activity names are stored in the "activity" variable
--------------------------------------------------------------------
+STEP 3. Descriptive activity names are stored in the "activity" variable
+------------------------------------------------------------------------
 
-4. All variable names are appropriately labeled
------------------------------------------------
+STEP 4. All variable names are appropriately labeled
+----------------------------------------------------
 
-5. Create a second, independent tidy data set with the average of each variable for each activity and each subject
-------------------------------------------------------------------------------------------------------------------
+STEP 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject
+-----------------------------------------------------------------------------------------------------------------------
 
 ``` r
 summarydata <- subset %>% group_by(activity, subject) %>% summarize_all(mean)
