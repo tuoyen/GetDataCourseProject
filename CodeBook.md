@@ -3,18 +3,19 @@ This codebook describes variables in the file "summarydata.txt", a dataset of wi
 Variable 1
 ----------
 
-activity: name of activity performed
+### activity: name of activity performed
 
 1.  WALKING
 2.  WALKING\_UPSTAIRS
 3.  WALKING\_DOWNSTAIRS
 4.  SITTING
-5.  STANDING 6 LAYING
+5.  STANDING
+6.  LAYING
 
 Variable 2
 ----------
 
-subject: subject ID number, ranging from 1 to 30
+### subject: subject ID number, ranging from 1 to 30
 
 Variables 3-68 Naming Convention
 --------------------------------
